@@ -24,10 +24,12 @@ function cargarLibros(){
             listaLibros.appendChild(option);
             });
     })
-    .catch(error => console.error("Error al cargar los libros:", error));
+    .catch(error =>{
+        mensaje.innerHTML = "Surgió un error " + error;
+    });
 }
     
-function mostrar() {
+function mostrar(){
     const url = "https://stephen-king-api.onrender.com/api/books";
     const libroSeleccionado = document.getElementById("libros").value;
     
@@ -37,9 +39,9 @@ function mostrar() {
     }
     
     axios.get(url)
-    .then(response => {
+    .then(response =>{
         const libro = response.data.data.find(libro => libro.id == libroSeleccionado);
-        if (libro){
+        if(libro){
             tbody.innerHTML = "";
             const fila = document.createElement('tr');
 
@@ -69,11 +71,10 @@ function mostrar() {
             }
             })
             .catch(error =>{
-                console.error("Error al cargar los datos:", error);
-                mensaje.textContent = "Error al cargar los datos";
+                mensaje.innerHTML = "Surgió un error " + error;
             });
 }
-    
+
 function limpiar(){
     tbody.innerHTML = "";
     mensaje.textContent = "";
