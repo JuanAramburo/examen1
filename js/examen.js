@@ -42,7 +42,7 @@ function mostrar(){
     .then(response =>{
         const libro = response.data.data.find(libro => libro.id == libroSeleccionado);
         if(libro){
-            tbody.innerHTML = "";
+            limpiar();
             const fila = document.createElement('tr');
 
             const columna1 = document.createElement('td');
