@@ -31,16 +31,16 @@ function cargarLibros(){
     
 function mostrar(){
     const url = "https://stephen-king-api.onrender.com/api/books";
-    const libroSeleccionado = document.getElementById("libros").value;
+    const libroSel = document.getElementById("libros").value;
     
-    if(libroSeleccionado == "Seleccionar libros"){
+    if(libroSel == "Seleccionar libros"){
         mensaje.innerHTML = "Por favor, seleccione un libro";
         return;
     }
     
     axios.get(url)
     .then(response =>{
-        const libro = response.data.data.find(libro => libro.id == libroSeleccionado);
+        const libro = response.data.data.find(libro => libro.id == libroSel);
         if(libro){
             limpiar();
             const fila = document.createElement('tr');
